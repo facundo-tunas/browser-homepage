@@ -3,6 +3,7 @@
   --secondaryFg: #d4d4d4;
   --bookmark-color: #d4d4d4;
   --containerBg: rgba(39, 39, 39, var(--transparency, 1));
+  --containerBgHover: rgba(39, 39, 39, 1);
   --accent-container: #fee0e0;
   --scrollbarColor: rgba(63, 63, 63, calc(var(--transparency, 1) * 0.8));
 
@@ -32,6 +33,7 @@
   --secondaryFg: #a6adc8;
   --bookmark-color: #a6adc8;
   --containerBg: rgba(30, 30, 46, var(--transparency, 1));
+  --containerBgHover: rgba(30, 30, 46, 1);
   --accent-container: #b4befe;
   --scrollbarColor: rgba(69, 71, 90, calc(var(--transparency, 1) * 0.8));
   --coin-shadow: #cdd6f4;
@@ -62,6 +64,7 @@
   --secondaryFg: #9ca0b0;
   --bookmark-color: #9ca0b0;
   --containerBg: rgba(239, 241, 245, var(--transparency, 1));
+  --containerBgHover: rgba(239, 241, 245, 1);
   --accent-container: #209fb5;
   --scrollbarColor: rgba(204, 208, 218, calc(var(--transparency, 1) * 0.8));
   --coin-shadow: #dce0e8;
@@ -94,6 +97,7 @@
   --secondaryFg: #d8dee9;
   --bookmark-color: #e5e9f0;
   --containerBg: rgba(46, 52, 64, var(--transparency, 1));
+  --containerBgHover: rgba(46, 52, 64, 1);
   --accent-container: #88c0d0;
   --scrollbarColor: rgba(76, 86, 106, calc(var(--transparency, 1) * 0.8));
 
@@ -123,6 +127,7 @@
   --secondaryFg: #657b83;
   --bookmark-color: #839496;
   --containerBg: rgba(253, 246, 227, var(--transparency, 1));
+  --containerBgHover: rgba(253, 246, 227, 1);
   --accent-container: #268bd2;
   --scrollbarColor: rgba(238, 232, 213, calc(var(--transparency, 1) * 0.8));
 
@@ -154,6 +159,7 @@
   --secondaryFg: #839496;
   --bookmark-color: #586e75;
   --containerBg: rgba(0, 43, 54, var(--transparency, 1));
+  --containerBgHover: rgba(0, 43, 54, 1);
   --accent-container: #268bd2;
   --scrollbarColor: rgba(7, 54, 66, calc(var(--transparency, 1) * 0.8));
 
@@ -183,6 +189,7 @@
   --secondaryFg: #787c99;
   --bookmark-color: #787c99;
   --containerBg: rgba(26, 27, 38, var(--transparency, 1));
+  --containerBgHover: rgba(26, 27, 38, 1);
   --accent-container: #7aa2f7;
   --scrollbarColor: rgba(36, 40, 59, calc(var(--transparency, 1) * 0.8));
 
@@ -212,6 +219,7 @@
   --secondaryFg: #bfbfbf;
   --bookmark-color: #bfbfbf;
   --containerBg: rgba(40, 42, 54, var(--transparency, 1));
+  --containerBgHover: rgba(40, 42, 54, 1);
   --accent-container: #bd93f9;
   --scrollbarColor: rgba(68, 71, 90, calc(var(--transparency, 1) * 0.8));
 
@@ -241,6 +249,7 @@
   --secondaryFg: #504945;
   --bookmark-color: #504945;
   --containerBg: rgba(251, 241, 199, var(--transparency, 1));
+  --containerBgHover: rgba(251, 241, 199, 1);
   --accent-container: #83a598;
   --scrollbarColor: rgba(213, 196, 161, calc(var(--transparency, 1) * 0.8));
 
@@ -272,6 +281,7 @@
   --secondaryFg: #bdae93;
   --bookmark-color: #bdae93;
   --containerBg: rgba(40, 40, 40, var(--transparency, 1));
+  --containerBgHover: rgba(40, 40, 40, 1);
   --accent-container: #83a598;
   --scrollbarColor: rgba(60, 56, 54, calc(var(--transparency, 1) * 0.8));
 

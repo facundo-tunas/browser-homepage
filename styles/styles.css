@@ -8,6 +8,7 @@ body {
 
   font-family: var(--normal-font);
 }
+
 body * {
   user-select: none;
 }
@@ -41,9 +42,11 @@ body * {
   padding: 0.5rem;
   border-radius: 5px;
 }
+
 .icon:hover {
   transform: scale(1.1);
 }
+
 .icon:active {
   transform: scale(0.9);
 }
@@ -69,15 +72,31 @@ body * {
   margin-bottom: 0.25em;
   padding: 0.2em;
 
-  cursor: pointer;
-
   position: relative;
   backdrop-filter: blur(var(--blur));
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--containerBgHover);
+    border-radius: 3px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    
+    z-index: -1;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
 }
+
 #clock::after {
   content: attr(data-day);
   position: absolute;
-  left: 0.5rem;
+  left: 0.25rem;
   top: 0.15rem;
 
   opacity: 0.7;
@@ -102,6 +121,24 @@ body * {
   text-align: center;
 
   user-select: none;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--containerBgHover);
+    border-radius: 3px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    
+    z-index: -1;
+  }
+
+  &:hover::before, &:not(:has(*:placeholder-shown))::before {
+    opacity: 1;
+  }
+
 }
 
 #searchInput {
@@ -140,10 +177,8 @@ body * {
 /* Bookmark Set */
 .bookmark-set {
   padding: 1em;
-  background: linear-gradient(
-    var(--containerBg) 18em,
-    var(--accent-container) 18.01em
-  );
+  background: linear-gradient(var(--containerBg) 18em,
+      var(--accent-container) 18.01em);
   border-radius: 3px;
   font-family: var(--mono-font);
   font-size: 1rem;
@@ -153,6 +188,26 @@ body * {
   box-sizing: border-box;
 
   backdrop-filter: blur(var(--blur));
+
+
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(var(--containerBgHover) 18em,
+        var(--accent-container) 18.01em);
+    border-radius: 3px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    
+    z-index: -1;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
 }
 
 /* Bookmark Inner Container */
@@ -183,6 +238,7 @@ body * {
 
   transition: opacity 0.5s;
 }
+
 .divider {
   display: block;
   width: 100%;
@@ -217,7 +273,7 @@ body * {
     overflow: scroll;
   }
 
-  #bookmark-container > .bookmark-set {
+  #bookmark-container>.bookmark-set {
     width: calc(50% - 40px);
   }
 
@@ -241,13 +297,14 @@ body * {
   .bookmark-title {
     font-size: 1.2rem;
   }
+
   .random-buttons {
     display: none;
   }
 }
 
 @media only screen and (max-width: 550px) {
-  #bookmark-container > .bookmark-set {
+  #bookmark-container>.bookmark-set {
     width: 100%;
   }
 
@@ -264,6 +321,8 @@ body * {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 #bookmark-container {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }

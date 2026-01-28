@@ -10,7 +10,7 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  translate: calc(var(--width) * -1) 0;
+  translate: calc((var(--width) + 10px)  * -1) 0;
   transition: translate 0.5s ease;
 
   display: flex;
@@ -27,7 +27,7 @@
 
   background-color: var(--containerBg);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
 
   > div {
     display: flex;

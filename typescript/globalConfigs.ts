@@ -2,6 +2,7 @@ const config = {
   showDate: true,
   showSearch: true,
   hideWallpapers: false,
+  hoverEffects: true,
 };
 
 function loadConfig() {
@@ -14,6 +15,9 @@ function loadConfig() {
       }
       if (parsedConfig.hideWallpapers === undefined) {
         parsedConfig.hideWallpapers = false;
+      }
+      if (parsedConfig.hoverEffects === undefined) {
+        parsedConfig.hoverEffects = true;
       }
 
       Object.assign(config, parsedConfig);
@@ -33,14 +37,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const clockElement = document.getElementById("clock");
   const dateCheckbox = document.getElementById(
-    "toggle-date-checkbox"
+    "toggle-date-checkbox",
   ) as HTMLInputElement;
   const searchCheckbox = document.getElementById(
-    "toggle-search-checkbox"
+    "toggle-search-checkbox",
+  ) as HTMLInputElement;
+  const hoverEffectsCheckbox = document.getElementById(
+    "toggle-hover-checkbox",
   ) as HTMLInputElement;
 
   dateCheckbox.checked = config.showDate;
   searchCheckbox.checked = config.showSearch;
+  hoverEffectsCheckbox.checked = config.hoverEffects;
 
   dateCheckbox.addEventListener("change", () => {
     config.showDate = dateCheckbox.checked;
@@ -52,12 +60,23 @@ document.addEventListener("DOMContentLoaded", function () {
     config.showSearch = searchCheckbox.checked;
     saveConfig();
     const searchWrapper = document.querySelector(
-      ".message-container"
+      ".message-container",
     ) as HTMLElement;
     if (searchWrapper) {
       searchWrapper.style.display = config.showSearch ? "block" : "none";
     }
   });
+
+  hoverEffectsCheckbox.addEventListener("change", () => {
+    config.hoverEffects = hoverEffectsCheckbox.checked;
+    saveConfig();
+    config.hoverEffects
+      ? root.style.setProperty("--containerBgHover", "")
+      : root.style.setProperty("--containerBgHover", "transparent");
+  });
+
+
+  // fire the configs up :-)
 
   if (clockElement) {
     clockElement.innerHTML = getTime();
@@ -68,9 +87,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const searchWrapper = document.querySelector(
-    ".message-container"
+    ".message-container",
   ) as HTMLElement;
   if (searchWrapper) {
     searchWrapper.style.display = config.showSearch ? "block" : "none";
   }
+
+  config.hoverEffects
+    ? root.style.setProperty("--containerBgHover", "")
+    : root.style.setProperty("--containerBgHover", "transparent");
 });
