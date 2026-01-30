@@ -259,6 +259,8 @@ document.addEventListener("DOMContentLoaded", function () {
       element.style.color = "";
     } else if (numberFind == 1 && !keywordFound) {
       let element = document.querySelector(".on") as HTMLElement;
+      element.classList.add("found");
+
       element.style.color = "var(--hover-color)";
     }
   });

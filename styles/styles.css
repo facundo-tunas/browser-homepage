@@ -205,7 +205,8 @@ body * {
     z-index: -1;
   }
 
-  &:hover::before {
+  &:hover::before, 
+  &:has(.found)::before {
     opacity: 1;
   }
 }
