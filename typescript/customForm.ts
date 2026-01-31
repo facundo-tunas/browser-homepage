@@ -39,23 +39,36 @@ function createForm(
     label.textContent = key;
 
     if (Array.isArray(value) && value[1] === "color") {
-      const colorVars = [
-        { value: "--red", text: "Red", color: getCSSVariable("--red") },
-        { value: "--blue", text: "Blue", color: getCSSVariable("--blue") },
-        { value: "--yellow", text: "Yellow", color: getCSSVariable("--yellow") },
-        { value: "--salmon", text: "Salmon", color: getCSSVariable("--salmon") },
-        { value: "--green", text: "Green", color: getCSSVariable("--green") },
-        { value: "--purple", text: "Purple", color: getCSSVariable("--purple") },
-        { value: "--orange", text: "Orange", color: getCSSVariable("--orange") },
-        { value: "--pink", text: "Pink", color: getCSSVariable("--pink") },
-        { value: "--cyan", text: "Cyan", color: getCSSVariable("--cyan") },
-        { value: "--teal", text: "Teal", color: getCSSVariable("--teal") },
-      ];
+      // Check if it's a hex color (starts with #)
+      if (typeof value[0] === "string" && value[0].startsWith("#")) {
+        // Use native color picker for hex colors
+        const colorInput = document.createElement("input");
+        colorInput.type = "color";
+        colorInput.value = value[0];
+        colorInput.name = key;
 
-      const defaultValue = value[0];
+        container.appendChild(label);
+        container.appendChild(colorInput);
+      } else {
+        // Use custom select for CSS variable colors
+        const colorVars = [
+          { value: "--red", text: "Red", color: getCSSVariable("--red") },
+          { value: "--blue", text: "Blue", color: getCSSVariable("--blue") },
+          { value: "--yellow", text: "Yellow", color: getCSSVariable("--yellow") },
+          { value: "--salmon", text: "Salmon", color: getCSSVariable("--salmon") },
+          { value: "--green", text: "Green", color: getCSSVariable("--green") },
+          { value: "--purple", text: "Purple", color: getCSSVariable("--purple") },
+          { value: "--orange", text: "Orange", color: getCSSVariable("--orange") },
+          { value: "--pink", text: "Pink", color: getCSSVariable("--pink") },
+          { value: "--cyan", text: "Cyan", color: getCSSVariable("--cyan") },
+          { value: "--teal", text: "Teal", color: getCSSVariable("--teal") },
+        ];
 
-      const colorSelect = createCustomSelect(key, colorVars, defaultValue, key);
-      container.appendChild(colorSelect);
+        const defaultValue = value[0];
+
+        const colorSelect = createCustomSelect(key, colorVars, defaultValue, key);
+        container.appendChild(colorSelect);
+      }
     } else {
       const input = document.createElement("input");
 
@@ -121,10 +134,20 @@ function createForm(
 
     for (const [key, value] of Object.entries(fields)) {
       if (Array.isArray(value) && value[1] === "color") {
-        const hiddenInput = form.querySelector(
-          `input[name="${key}"]`
+        const colorInput = form.querySelector(
+          `input[name="${key}"][type="color"]`
         ) as HTMLInputElement;
-        formData[key] = `var(${hiddenInput.value})`;
+        
+        if (colorInput) {
+          // Direct hex color input
+          formData[key] = colorInput.value;
+        } else {
+          // Custom select for CSS variables
+          const hiddenInput = form.querySelector(
+            `input[name="${key}"]`
+          ) as HTMLInputElement;
+          formData[key] = `var(${hiddenInput.value})`;
+        }
       } else {
         const input = form.querySelector(
           `input[name="${key}"]`

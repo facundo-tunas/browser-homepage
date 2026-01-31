@@ -1,6 +1,6 @@
 .time-stuff-container {
   position: absolute;
-  top: 7rem;
+  top: 2rem;
   right: 2rem;
 
   display: flex;
@@ -19,6 +19,7 @@
 
   cursor: pointer;
 }
+
 .time-stuff-container div p {
   margin: 0;
   padding: 0.5em;
