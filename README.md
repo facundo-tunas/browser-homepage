@@ -23,13 +23,11 @@
 
 ### 3. Additional Features (things I did when I got bored)
 
-- Web camera quick access
 - Stopwatch (type "stopwatch" and press Enter to start)
-- Timer (click on time to start, doesn't work very well xd)
 - Coin flip animation (type "flip" and press Enter)
-- Dynamic background changes based on time of day
+- Automatic Dark/Light Mode Switching
 - Settings panel accessible via icon or ESC key
-- Ability to choose between a selection of wallpapers.
+- Ability to choose between a selection of wallpapers and themes.
 
 ## Usage
 
@@ -57,31 +55,18 @@
 - `Ctrl + A`: Clear search input
 
 ## Installation
+- Requirements: Node.js
 
-1. Clone the repository
-2. Set as homepage or new tab page in your browser settings
+1. Clone the repo and run server.js.
+    ```bash
+    git clone https://github.com/your-username/this.git
+    cd this
+    node server.js
+    ```
+2. The homepage will be available at: http://localhost:9991.
+    Set this URL as your browser’s homepage or startup page.
 
-### How to set local file as browser homepage (Firefox): ([mozilla.cfg](https://www.reddit.com/r/firefox/comments/ge86z4/newtab_page_to_local_file_firefox_76_redux/))
+NOTES: 
+- To avoid starting the server manually each time, set it up to launch on system startup (For example: use the Task Scheduler in Windows).
+- If port 9991 is already in use, update the PORT constant in server.js.
 
-> C:\Program Files (x86)\Mozilla Firefox\defaults\pref\local-settings.js
-
-```js
-//
-pref("general.config.filename", "mozilla.cfg");
-pref("general.config.obscure_value", 0);
-pref("general.config.sandbox_enabled", false);
-```
-
-> C:\Program Files (x86)\Mozilla Firefox\mozilla.cfg
-
-```cfg
-//
-var {classes:Cc,interfaces:Ci,utils:Cu} = Components;
-
-/* set new tab page */
-try {
-  Cu.import("resource:///modules/AboutNewTab.jsm");
-  var newTabURL = "file:///{FILE_PATH_HERE}";
-  AboutNewTab.newTabURL = newTabURL;
-} catch(e){Cu.reportError(e);} // report errors in the Browser Console
-```
