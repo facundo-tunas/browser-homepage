@@ -20,12 +20,10 @@
 
   --hover-color: var(--cyan);
   --transparent: rgba(255, 255, 255, calc(var(--transparency, 1) * 0.15));
-  --background-shadow-settings: rgba(
-    255,
-    255,
-    255,
-    calc(var(--transparency, 1) * 0.3)
-  );
+  --background-shadow-settings: rgba(255,
+      255,
+      255,
+      0.1);
 }
 
 .palette-mocha {
@@ -51,12 +49,10 @@
 
   --hover-color: var(--teal);
   --transparent: rgba(255, 255, 255, calc(var(--transparency, 1) * 0.15));
-  --background-shadow-settings: rgba(
-    255,
-    255,
-    255,
-    calc(var(--transparency, 1) * 0.3)
-  );
+  --background-shadow-settings: rgba(255,
+      255,
+      255,
+      0.3);
 }
 
 .palette-catppuccin-latte {
@@ -84,12 +80,10 @@
   --active-color: #000 !important;
 
   --transparent: rgba(0, 0, 0, calc(var(--transparency, 1) * 0.05));
-  --background-shadow-settings: rgba(
-    85,
-    85,
-    85,
-    calc(var(--transparency, 1) * 0.05)
-  );
+  --background-shadow-settings: rgba(85,
+      85,
+      85,
+      0.05);
 }
 
 .palette-nord {
@@ -114,12 +108,10 @@
 
   --hover-color: var(--teal);
   --transparent: rgba(255, 255, 255, calc(var(--transparency, 1) * 0.05));
-  --background-shadow-settings: rgba(
-    255,
-    255,
-    255,
-    calc(var(--transparency, 1) * 0.2)
-  );
+  --background-shadow-settings: rgba(255,
+      255,
+      255,
+      0.2);
 }
 
 .palette-solarized-light {
@@ -146,17 +138,15 @@
   --active-color: #000 !important;
 
   --transparent: rgba(0, 0, 0, calc(var(--transparency, 1) * 0.05));
-  --background-shadow-settings: rgba(
-    85,
-    85,
-    85,
-    calc(var(--transparency, 1) * 0.05)
-  );
+  --background-shadow-settings: rgba(85,
+      85,
+      85,
+      0.05);
 }
 
 .palette-solarized-dark {
-  --fg: #93a1a1;
-  --secondaryFg: #839496;
+  --fg: #eee8d5;
+  --secondaryFg: #93a1a1;
   --bookmark-color: #586e75;
   --containerBg: rgba(0, 43, 54, var(--transparency, 1));
   --containerBgHover: rgba(0, 43, 54, 1);
@@ -176,12 +166,10 @@
 
   --hover-color: var(--blue);
   --transparent: rgba(255, 255, 255, calc(var(--transparency, 1) * 0.15));
-  --background-shadow-settings: rgba(
-    255,
-    255,
-    255,
-    calc(var(--transparency, 1) * 0.3)
-  );
+  --background-shadow-settings: rgba(255,
+      255,
+      255,
+      0.3);
 }
 
 .palette-tokyo-night {
@@ -206,12 +194,10 @@
 
   --hover-color: var(--cyan);
   --transparent: rgba(255, 255, 255, calc(var(--transparency, 1) * 0.15));
-  --background-shadow-settings: rgba(
-    255,
-    255,
-    255,
-    calc(var(--transparency, 1) * 0.3)
-  );
+  --background-shadow-settings: rgba(255,
+      255,
+      255,
+      0.3);
 }
 
 .palette-dracula {
@@ -236,12 +222,10 @@
 
   --hover-color: var(--cyan);
   --transparent: rgba(255, 255, 255, calc(var(--transparency, 1) * 0.15));
-  --background-shadow-settings: rgba(
-    255,
-    255,
-    255,
-    calc(var(--transparency, 1) * 0.3)
-  );
+  --background-shadow-settings: rgba(255,
+      255,
+      255,
+      0.3);
 }
 
 .palette-gruvbox-light {
@@ -267,12 +251,10 @@
   --hover-color: var(--cyan);
   --active-color: #000 !important;
 
-  --background-shadow-settings: rgba(
-    85,
-    85,
-    85,
-    calc(var(--transparency, 1) * 0.05)
-  );
+  --background-shadow-settings: rgba(85,
+      85,
+      85,
+      0.05);
   --transparent: rgba(0, 0, 0, calc(var(--transparency, 1) * 0.05));
 }
 
@@ -298,10 +280,8 @@
 
   --hover-color: var(--cyan);
   --transparent: rgba(255, 255, 255, calc(var(--transparency, 1) * 0.05));
-  --background-shadow-settings: rgba(
-    255,
-    255,
-    255,
-    calc(var(--transparency, 1) * 0.2)
-  );
+  --background-shadow-settings: rgba(255,
+      255,
+      255,
+      0.2);
 }

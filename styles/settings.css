@@ -2,6 +2,8 @@
   translate: 0;
 }
 .settings {
+  --containerBg: var(--containerBgHover);
+
   --width: min(450px, 100vw);
   width: var(--width);
   z-index: 99;
@@ -22,8 +24,6 @@
   min-height: 100vh;
   max-height: 100vh;
   overflow: scroll;
-
-  backdrop-filter: blur(var(--blur));
 
   background-color: var(--containerBg);
   border-right: 1px solid rgba(255, 255, 255, 0.1);

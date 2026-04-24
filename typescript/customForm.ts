@@ -32,6 +32,19 @@ function createForm(
       .trim();
   };
 
+  const colorVars = [
+    { value: "--red", text: "Red", color: getCSSVariable("--red") },
+    { value: "--blue", text: "Blue", color: getCSSVariable("--blue") },
+    { value: "--yellow", text: "Yellow", color: getCSSVariable("--yellow") },
+    { value: "--salmon", text: "Salmon", color: getCSSVariable("--salmon") },
+    { value: "--green", text: "Green", color: getCSSVariable("--green") },
+    { value: "--purple", text: "Purple", color: getCSSVariable("--purple") },
+    { value: "--orange", text: "Orange", color: getCSSVariable("--orange") },
+    { value: "--pink", text: "Pink", color: getCSSVariable("--pink") },
+    { value: "--cyan", text: "Cyan", color: getCSSVariable("--cyan") },
+    { value: "--teal", text: "Teal", color: getCSSVariable("--teal") },
+  ];
+
   for (const [key, value] of Object.entries(fields)) {
     const container = document.createElement("div");
 
@@ -39,36 +52,8 @@ function createForm(
     label.textContent = key;
 
     if (Array.isArray(value) && value[1] === "color") {
-      // Check if it's a hex color (starts with #)
-      if (typeof value[0] === "string" && value[0].startsWith("#")) {
-        // Use native color picker for hex colors
-        const colorInput = document.createElement("input");
-        colorInput.type = "color";
-        colorInput.value = value[0];
-        colorInput.name = key;
-
-        container.appendChild(label);
-        container.appendChild(colorInput);
-      } else {
-        // Use custom select for CSS variable colors
-        const colorVars = [
-          { value: "--red", text: "Red", color: getCSSVariable("--red") },
-          { value: "--blue", text: "Blue", color: getCSSVariable("--blue") },
-          { value: "--yellow", text: "Yellow", color: getCSSVariable("--yellow") },
-          { value: "--salmon", text: "Salmon", color: getCSSVariable("--salmon") },
-          { value: "--green", text: "Green", color: getCSSVariable("--green") },
-          { value: "--purple", text: "Purple", color: getCSSVariable("--purple") },
-          { value: "--orange", text: "Orange", color: getCSSVariable("--orange") },
-          { value: "--pink", text: "Pink", color: getCSSVariable("--pink") },
-          { value: "--cyan", text: "Cyan", color: getCSSVariable("--cyan") },
-          { value: "--teal", text: "Teal", color: getCSSVariable("--teal") },
-        ];
-
-        const defaultValue = value[0];
-
-        const colorSelect = createCustomSelect(key, colorVars, defaultValue, key);
-        container.appendChild(colorSelect);
-      }
+      const colorSelect = createCustomSelect(key, colorVars, value[0], key);
+      container.appendChild(colorSelect);
     } else {
       const input = document.createElement("input");
 
@@ -134,20 +119,10 @@ function createForm(
 
     for (const [key, value] of Object.entries(fields)) {
       if (Array.isArray(value) && value[1] === "color") {
-        const colorInput = form.querySelector(
-          `input[name="${key}"][type="color"]`
+        const hiddenInput = form.querySelector(
+          `input[name="${key}"]`
         ) as HTMLInputElement;
-        
-        if (colorInput) {
-          // Direct hex color input
-          formData[key] = colorInput.value;
-        } else {
-          // Custom select for CSS variables
-          const hiddenInput = form.querySelector(
-            `input[name="${key}"]`
-          ) as HTMLInputElement;
-          formData[key] = `var(${hiddenInput.value})`;
-        }
+        formData[key] = hiddenInput.value; // already var(--x) or #hex
       } else {
         const input = form.querySelector(
           `input[name="${key}"]`
@@ -193,15 +168,20 @@ function createCustomSelect(
   selectTrigger.classList.add("custom-select-trigger");
   selectTrigger.tabIndex = 0;
 
-  const defaultOption =
-    options.find((opt) => opt.value === defaultValue) || options[0];
-  if (defaultOption.color) {
+  // Handle both hex and CSS variable defaults
+  const isHexDefault = defaultValue.startsWith("#");
+  const defaultOption = options.find((opt) => opt.value === defaultValue);
+
+  if (isHexDefault) {
+    selectTrigger.style.backgroundColor = defaultValue;
+  } else if (defaultOption?.color) {
     selectTrigger.style.backgroundColor = defaultOption.color;
   }
 
   const optionsList = document.createElement("div");
   optionsList.classList.add("custom-options");
 
+  // Theme swatches
   options.forEach((option) => {
     const optionElement = document.createElement("div");
     optionElement.classList.add("custom-option");
@@ -219,13 +199,38 @@ function createCustomSelect(
         selectTrigger.style.backgroundColor = "";
       }
       optionsList.classList.remove("open");
-
-      const hiddenInput = container.querySelector("input") as HTMLInputElement;
-      hiddenInput.value = option.value;
+      hiddenInput.value = `var(${option.value})`;
     });
 
     optionsList.appendChild(optionElement);
   });
+
+  // Custom color picker entry
+  const customOption = document.createElement("div");
+  customOption.classList.add("custom-option", "custom-color-picker");
+  customOption.title = "Custom color";
+  customOption.textContent = "+";
+
+  const nativePicker = document.createElement("input");
+  nativePicker.type = "color";
+  nativePicker.value = isHexDefault ? defaultValue : "#ffffff";
+  nativePicker.style.cssText =
+    "position:absolute; opacity:0; width:0; height:0; pointer-events:none;";
+
+  customOption.appendChild(nativePicker);
+
+  nativePicker.addEventListener("input", () => {
+    selectTrigger.style.backgroundColor = nativePicker.value;
+    hiddenInput.value = nativePicker.value;
+    optionsList.classList.remove("open");
+  });
+
+  customOption.addEventListener("click", (e) => {
+    e.stopPropagation();
+    nativePicker.click();
+  });
+
+  optionsList.appendChild(customOption);
 
   selectTrigger.addEventListener("click", (e) => {
     e.stopPropagation();
@@ -248,7 +253,7 @@ function createCustomSelect(
   const hiddenInput = document.createElement("input");
   hiddenInput.type = "hidden";
   hiddenInput.name = name;
-  hiddenInput.value = defaultValue;
+  hiddenInput.value = isHexDefault ? defaultValue : `var(${defaultValue})`;
 
   selectWrapper.appendChild(selectTrigger);
   selectWrapper.appendChild(optionsList);
