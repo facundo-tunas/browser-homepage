@@ -195,7 +195,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     keywordFound = false;
 
-    // Handle Ctrl + A (select all)
     if (event.ctrlKey) {
       event.preventDefault();
     }
@@ -205,6 +204,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
       resetBookmarkStyles(links);
 
+      return;
+    }
+
+    if (event.key === "v" && event.ctrlKey) {
+      navigator.clipboard.readText().then((text) => {
+        searchInput.value += text;
+
+        requestAnimationFrame(() => {
+          const len = searchInput.value.length;
+          searchInput.setSelectionRange(len, len);
+          searchInput.scrollLeft = searchInput.scrollWidth;
+        });
+      });
       return;
     }
 
