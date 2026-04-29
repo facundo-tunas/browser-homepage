@@ -1,7 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.getElementById(
-    "searchInput"
+    "searchInput",
   ) as HTMLInputElement;
+  searchInput.addEventListener("input", () => {
+    searchInput.scrollLeft = searchInput.scrollWidth;
+  });
   const root = document.documentElement;
 
   let numberFind = 0;
@@ -43,7 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
       const [_, prefix, query] = prefixMatch;
       return {
         type: prefix.toLowerCase(),
-        query: query.trim(),
+        query: query
+          .trim()
+          .split(getSearchSplit())
+          .map((q) => q.trim()),
       };
     }
 
@@ -51,6 +57,11 @@ document.addEventListener("DOMContentLoaded", function () {
       type: "default",
       query: searchValue.trim(),
     };
+  };
+
+  const getSearchSplit = () => {
+    const split = localStorage.getItem("prefixSplit");
+    return split ? JSON.parse(split) : "|";
   };
 
   const getSearchPrefixes = () => {
@@ -64,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const links = document.querySelectorAll(
-      ".bookmark"
+      ".bookmark",
     ) as NodeListOf<HTMLAnchorElement>;
     if (event.altKey) {
       return;
@@ -93,10 +104,16 @@ document.addEventListener("DOMContentLoaded", function () {
       if (searchAnalysis.type !== "default") {
         const prefixUrl = prefixes[searchAnalysis.type];
         if (prefixUrl) {
-          const finalUrl = prefixUrl.replace(
-            "{query}",
-            encodeURIComponent(searchAnalysis.query)
-          );
+          let query = 0;
+
+          const findAndReplace = () => {
+            const response = encodeURIComponent(searchAnalysis.query[query]);
+            query++;
+
+            return response;
+          };
+
+          const finalUrl = prefixUrl.replaceAll("{query}", findAndReplace);
           redirectToUrl(finalUrl);
         }
         return;
@@ -105,8 +122,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (event.ctrlKey) {
           redirectToUrl(
             `https://www.google.com/search?q=${encodeURIComponent(
-              searchInput.value
-            )}`
+              searchInput.value,
+            )}`,
           );
           return;
         }
@@ -191,12 +208,24 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // Handle Backspace key
     if (event.key === "Backspace") {
       searchInput.value = searchInput.value.slice(0, -1);
+
+      requestAnimationFrame(() => {
+        const len = searchInput.value.length;
+        searchInput.setSelectionRange(len, len);
+        searchInput.scrollLeft = searchInput.scrollWidth;
+      });
+
       numberFind = 0;
     } else if (!event.ctrlKey) {
       searchInput.value += event.key;
+
+      requestAnimationFrame(() => {
+        const len = searchInput.value.length;
+        searchInput.setSelectionRange(len, len);
+        searchInput.scrollLeft = searchInput.scrollWidth;
+      });
     }
 
     if (document.activeElement !== searchInput) {
@@ -209,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     numberFind = 0;
     (document.querySelectorAll(".on") as NodeListOf<HTMLElement>).forEach(
-      (elem) => (elem.style.color = "")
+      (elem) => (elem.style.color = ""),
     );
 
     if (searchInput.value.length > 0) {

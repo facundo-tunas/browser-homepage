@@ -2,6 +2,7 @@ interface Field {
   [key: string]:
     | string
     | [string, string]
+    | [string, string, string]
     | [boolean, "checkbox"]
     | [string, "color"];
 }
@@ -11,7 +12,7 @@ function createForm(
   onSubmit:
     | ((formData: { [key: string]: string | boolean }) => void)
     | [string, (formData: { [key: string]: string | boolean }) => void],
-  onSecondary?: ((() => void) | [string, () => void]) | null
+  onSecondary?: ((() => void) | [string, () => void]) | null,
 ): void {
   const form = document.createElement("form");
   form.classList.add("dynamic-form");
@@ -43,6 +44,12 @@ function createForm(
     { value: "--pink", text: "Pink", color: getCSSVariable("--pink") },
     { value: "--cyan", text: "Cyan", color: getCSSVariable("--cyan") },
     { value: "--teal", text: "Teal", color: getCSSVariable("--teal") },
+    {
+      value: "--containerBg",
+      text: "Background Color",
+      color: getCSSVariable("--bg"),
+    },
+    { value: "--fg", text: "Text Color", color: getCSSVariable("--fg") },
   ];
 
   for (const [key, value] of Object.entries(fields)) {
@@ -60,6 +67,9 @@ function createForm(
       if (Array.isArray(value)) {
         input.type = value[1];
         input.value = value[0].toString();
+        if (value[2] && value[1] !== "checkbox" && value[1] !== "color") {
+          input.placeholder = value[2] as string;
+        }
       } else {
         input.type = "text";
         input.value = value as string;
@@ -120,12 +130,12 @@ function createForm(
     for (const [key, value] of Object.entries(fields)) {
       if (Array.isArray(value) && value[1] === "color") {
         const hiddenInput = form.querySelector(
-          `input[name="${key}"]`
+          `input[name="${key}"]`,
         ) as HTMLInputElement;
         formData[key] = hiddenInput.value; // already var(--x) or #hex
       } else {
         const input = form.querySelector(
-          `input[name="${key}"]`
+          `input[name="${key}"]`,
         ) as HTMLInputElement;
         if (input && input.type === "checkbox") {
           formData[key] = input.checked;
@@ -152,7 +162,7 @@ function createCustomSelect(
   name: string,
   options: { value: string; color?: string; text?: string }[],
   defaultValue: string,
-  labelText: string
+  labelText: string,
 ): HTMLDivElement {
   const container = document.createElement("div");
   container.classList.add("custom-select-container");
