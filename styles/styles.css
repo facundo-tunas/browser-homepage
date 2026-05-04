@@ -6,7 +6,7 @@ body {
   background-position: center;
   margin: 0;
 
-  font-family: var(--normal-font);
+  font-family: var(--normal-font), system-ui;
 }
 
 body * {

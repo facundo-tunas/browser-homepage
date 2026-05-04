@@ -125,12 +125,20 @@
   }
 }
 
-#wallpaper-title:hover {
+#wallpaper-title:hover,
+#bookmarks-title:hover,
+#search-prefixes-title:hover,
+#palettes-title:hover,
+#global-settings-title:hover {
   cursor: pointer;
   text-decoration: underline;
 }
 
-#wallpaper-title.hidden::after {
+#wallpaper-title.hidden::after,
+#bookmarks-title.hidden::after,
+#search-prefixes-title.hidden::after,
+#palettes-title.hidden::after,
+#global-settings-title.hidden::after {
   content: " (hidden)";
   opacity: 0.6;
   font-style: italic;

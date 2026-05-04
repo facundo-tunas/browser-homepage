@@ -6,6 +6,9 @@
     <title>Homepage</title>
     <link href="assets/favicon.png" rel="shortcut icon" type="image/x-icon" />
 
+    <link rel="preload" href="fonts/roboto-v30-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/roboto-mono-v23-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
+
     <link rel="stylesheet" href="./bundle.css" />
     <script src="./bundle.min.js"></script>
   </head>
@@ -13,7 +16,7 @@
   <body>
     <div class="settings container-card">
       <div>
-        <h3>Global Settings</h3>
+        <h3 id="global-settings-title">Global Settings</h3>
         <div class="individual-setting">
           <label class="setting-checkbox">
             <input type="checkbox" id="toggle-date-checkbox" />
@@ -30,12 +33,12 @@
         </div>
       </div>
       <div>
-        <h3>Bookmarks</h3>
+        <h3 id="bookmarks-title">Bookmarks</h3>
         <button id="add-bookmark">Add Bookmark Set</button>
         <div id="bookmarks-container" class="settings-category-container"></div>
       </div>
       <div>
-        <h3>Search Prefixes</h3>
+        <h3 id="search-prefixes-title">Search Prefixes</h3>
         <div
           id="search-prefixes-container"
           class="settings-category-container"
@@ -46,7 +49,7 @@
         <div id="wallpaper-container" class="settings-category-container"></div>
       </div>
       <div>
-        <h3>Color Palettes</h3>
+        <h3 id="palettes-title">Color Palettes</h3>
         <div id="palettes-container" class="settings-category-container"></div>
       </div>
     </div>

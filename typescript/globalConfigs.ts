@@ -2,6 +2,10 @@ const config = {
   showDate: true,
   showSearch: true,
   hideWallpapers: false,
+  hideGlobalSettings: false,
+  hideBookmarks: false,
+  hideSearchPrefixes: false,
+  hidePalettes: false,
   hoverEffects: true,
 };
 
@@ -16,6 +20,18 @@ function loadConfig() {
       if (parsedConfig.hideWallpapers === undefined) {
         parsedConfig.hideWallpapers = false;
       }
+      if (parsedConfig.hideGlobalSettings === undefined) {
+        parsedConfig.hideGlobalSettings = false;
+      }
+      if (parsedConfig.hideBookmarks === undefined) {
+        parsedConfig.hideBookmarks = false;
+      }
+      if (parsedConfig.hideSearchPrefixes === undefined) {
+        parsedConfig.hideSearchPrefixes = false;
+      }
+      if (parsedConfig.hidePalettes === undefined) {
+        parsedConfig.hidePalettes = false;
+      }
       if (parsedConfig.hoverEffects === undefined) {
         parsedConfig.hoverEffects = true;
       }
@@ -25,6 +41,9 @@ function loadConfig() {
       console.warn("Failed to parse saved config, using defaults");
     }
   }
+
+  const storedStopwatch = localStorage.getItem("storedStopwatch");
+  if (storedStopwatch) startStopwatch();
 }
 
 function saveConfig() {
@@ -74,7 +93,6 @@ document.addEventListener("DOMContentLoaded", function () {
       ? root.style.setProperty("--containerBgHover", "")
       : root.style.setProperty("--containerBgHover", "transparent");
   });
-
 
   // fire the configs up :-)
 

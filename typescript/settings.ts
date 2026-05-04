@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("keydown", (e: KeyboardEvent) => {
     if (e.code === "Escape") {
+      console.log("xd")
       openSettingsTab();
     }
   });
@@ -8,7 +9,46 @@ document.addEventListener("DOMContentLoaded", () => {
   initializeBookmarksSettings();
   initializeSearchSettings();
   initializeWallpaperSettings();
+  initializePaletteSettings();
+  initializeSectionHideToggles();
 });
+
+function initializeSectionHideToggles() {
+  const sections = [
+    { title: "#global-settings-title", container: "#global-settings-title + .individual-setting", configKey: "hideGlobalSettings" as const },
+    { title: "#bookmarks-title", container: "#add-bookmark, #bookmarks-container", configKey: "hideBookmarks" as const },
+    { title: "#search-prefixes-title", container: "#search-prefixes-container", configKey: "hideSearchPrefixes" as const },
+    { title: "#palettes-title", container: "#palettes-container", configKey: "hidePalettes" as const },
+  ];
+
+  sections.forEach(({ title, container, configKey }) => {
+    const titleEl = document.querySelector(title);
+    titleEl?.addEventListener("mouseup", () => {
+      (config as any)[configKey] = !(config as any)[configKey];
+      titleEl.classList.toggle("hidden", (config as any)[configKey]);
+
+      const containers = document.querySelectorAll(container);
+      containers.forEach((el) => {
+        (el as HTMLElement).style.display = (config as any)[configKey] ? "none" : "";
+      });
+
+      saveConfig();
+    });
+  });
+
+  // Apply saved state on load
+  sections.forEach(({ title, container, configKey }) => {
+    if ((config as any)[configKey]) {
+      const titleEl = document.querySelector(title);
+      titleEl?.classList.add("hidden");
+
+      const containers = document.querySelectorAll(container);
+      containers.forEach((el) => {
+        (el as HTMLElement).style.display = "none";
+      });
+    }
+  });
+}
 
 function openSettingsTab() {
   const settings = document.querySelector(".settings");

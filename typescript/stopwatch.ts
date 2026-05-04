@@ -23,6 +23,7 @@ function startStopwatch(): void {
 
     newTimerElement.addEventListener("click", () => {
       endStopwatch(newTimerElement);
+      localStorage.removeItem("storedStopwatch");
     });
 
     newTimerElement.addEventListener("keydown", (e) => {
@@ -32,7 +33,12 @@ function startStopwatch(): void {
       }
     });
 
-    const startTime = Date.now();
+    const storedStopwatch = localStorage.getItem("storedStopwatch");
+    const startTime = storedStopwatch
+      ? Number(JSON.parse(storedStopwatch))
+      : Date.now();
+
+    localStorage.setItem("storedStopwatch", JSON.stringify(startTime));
 
     if (intervalStopwatch) {
       clearInterval(intervalStopwatch);
@@ -59,6 +65,8 @@ function endStopwatch(elem: HTMLElement): void {
     clearInterval(intervalStopwatch);
     intervalStopwatch = undefined;
   }
+
+  localStorage.removeItem("storedStopwatch");
 
   elem.style.animation = "fadeOut 0.5s linear";
   setTimeout(() => {
