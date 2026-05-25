@@ -93,10 +93,9 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    event.preventDefault();
-
     // handle searching
     if (event.key === "Enter") {
+      event.preventDefault();
       const searchAnalysis = analyzeSearchInput(searchInput.value);
       const prefixes = getSearchPrefixes();
 
@@ -195,10 +194,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     keywordFound = false;
 
-    if (event.ctrlKey) {
-      event.preventDefault();
-    }
     if (event.key === "a" && event.ctrlKey) {
+      event.preventDefault();
       searchInput.value = "";
       keywordFound = false;
 
@@ -208,6 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (event.key === "v" && event.ctrlKey) {
+      event.preventDefault();
       navigator.clipboard.readText().then((text) => {
         searchInput.value += text;
 
@@ -221,6 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (event.key === "Backspace") {
+      event.preventDefault();
       searchInput.value = searchInput.value.slice(0, -1);
 
       requestAnimationFrame(() => {
@@ -231,6 +230,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       numberFind = 0;
     } else if (!event.ctrlKey) {
+      event.preventDefault();
       searchInput.value += event.key;
 
       requestAnimationFrame(() => {
