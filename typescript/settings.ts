@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initializeSearchSettings();
   initializeWallpaperSettings();
   initializePaletteSettings();
+  initializeStyleSettings();
   initializeSectionHideToggles();
 });
 

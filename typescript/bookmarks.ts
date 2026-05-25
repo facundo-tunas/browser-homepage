@@ -51,7 +51,20 @@ function setupBookmarks(): void {
       const link = document.createElement("a");
       link.classList.add("bookmark");
       link.href = l.url;
-      link.textContent = l.name;
+
+      const favicon = document.createElement("img");
+      favicon.className = "favicon";
+      favicon.loading = "lazy";
+      favicon.alt = "";
+      try {
+        const hostname = new URL(l.url).hostname;
+        favicon.src = `https://icons.duckduckgo.com/ip3/${hostname}.ico`;
+      } catch {
+        favicon.style.display = "none";
+      }
+      favicon.onerror = () => favicon.style.display = "none";
+      link.appendChild(favicon);
+      link.appendChild(document.createTextNode(l.name));
 
       if (l.keywords) {
         link.setAttribute("data-keywords", l.keywords.join(" "));

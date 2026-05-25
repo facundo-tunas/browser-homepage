@@ -64,6 +64,17 @@ body * {
   min-width: 70vw;
 }
 
+/* Top Row (clock + search) */
+#top-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#clock-search-sep {
+  display: none;
+}
+
 /* Clock */
 #clock {
   font-family: var(--mono-font);
@@ -239,6 +250,10 @@ body * {
 
 .on {
   color: var(--active-color);
+}
+
+.bookmark .favicon {
+  display: none;
 }
 
 .bookmark:hover {
