@@ -1,7 +1,21 @@
 document.addEventListener("DOMContentLoaded", function () {
+  function getTextWidth(text: string, font: string): number {
+    console.log(font);
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d")!;
+    ctx.font = font;
+    return ctx.measureText(text).width;
+  }
+
   const searchInput = document.getElementById(
     "searchInput",
   ) as HTMLInputElement;
+
+  let baseWidth = 0;
+  setTimeout(() => {
+   baseWidth = searchInput.offsetWidth;
+  }, 0);
+
   searchInput.addEventListener("input", () => {
     searchInput.scrollLeft = searchInput.scrollWidth;
   });
@@ -200,6 +214,9 @@ document.addEventListener("DOMContentLoaded", function () {
       keywordFound = false;
 
       resetBookmarkStyles(links);
+      const inputFont = getComputedStyle(searchInput).font;
+      const textWidth = getTextWidth(searchInput.value, inputFont);
+      searchInput.style.width = Math.max(baseWidth, textWidth + 20) + "px";
 
       return;
     }
@@ -247,6 +264,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (searchInput.value.length === 0) {
       resetBookmarkStyles(links);
     }
+
+    const inputFont = getComputedStyle(searchInput).font;
+    const textWidth = getTextWidth(searchInput.value, inputFont);
+    searchInput.style.width = Math.max(baseWidth, textWidth + 20) + "px";
 
     numberFind = 0;
     (document.querySelectorAll(".on") as NodeListOf<HTMLElement>).forEach(

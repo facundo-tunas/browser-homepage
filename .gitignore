@@ -1,3 +1,5 @@
 package-lock.json
+.gitignore
 package.json
 node_modules/
+.opencode/

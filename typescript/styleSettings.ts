@@ -13,10 +13,10 @@ const definedStyles: LayoutStyle[] = [
     description: "Original layout",
   },
   {
-    name: "Alternate",
+    name: "Minimal",
     cssClass: "style-alternate",
     isActive: false,
-    description: "Alternate layout",
+    description: "More minimalistic layout",
   },
 ];
 
