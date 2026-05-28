@@ -486,7 +486,7 @@ function getDragAfterElement(
 function addLinkToBookmarkSet(bookmarkSetIndex: number): void {
   const fields: Field = {
     "Link Name": "",
-    URL: ["", "url"],
+    URL: ["", "text"],
     "Hide Link": [false, "checkbox"],
     "Add Divider": [false, "checkbox"],
     Keywords: ["", "text"],
@@ -516,7 +516,7 @@ function editLink(bookmarkSetIndex: number, linkIndex: number): void {
 
   const fields: Field = {
     "Link Name": link.name,
-    URL: [link.url, "url"],
+    URL: [link.url, "text"],
     "Hide Link": [link.hide || false, "checkbox"],
     "Add Divider": [link.divide || false, "checkbox"],
     Keywords: [link.keywords ? link.keywords.join(", ") : "", "text"],

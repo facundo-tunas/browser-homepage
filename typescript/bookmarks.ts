@@ -27,6 +27,33 @@ let bookmarks: Bookmark[] = (() => {
 })();
 saveBookmarks();
 
+const normalizeUrl = (url: string): string => {
+  const trimmed = url.trim();
+
+  const allowedSchemes = [
+    "http://",
+    "https://",
+    "about:",
+    "chrome://",
+    "edge://",
+    "file://",
+    "steam://",
+    "obsidian://",
+  ];
+
+  if (
+    allowedSchemes.some((scheme) => trimmed.toLowerCase().startsWith(scheme))
+  ) {
+    return trimmed;
+  }
+
+  if (trimmed.startsWith("//")) {
+    return `https:${trimmed}`;
+  }
+
+  return `https://${trimmed}`;
+};
+
 function setupBookmarks(): void {
   const bookmarkContainer = document.getElementById("bookmark-container");
   if (bookmarkContainer) bookmarkContainer.innerHTML = "";
@@ -50,19 +77,19 @@ function setupBookmarks(): void {
     b.links.map((l) => {
       const link = document.createElement("a");
       link.classList.add("bookmark");
-      link.href = l.url;
+      link.href = normalizeUrl(l.url);
 
       const favicon = document.createElement("img");
       favicon.className = "favicon";
       favicon.loading = "lazy";
       favicon.alt = "";
       try {
-        const hostname = new URL(l.url).hostname;
+        const hostname = new URL(normalizeUrl(l.url)).hostname;
         favicon.src = `https://icons.duckduckgo.com/ip3/${hostname}.ico`;
       } catch {
         favicon.style.display = "none";
       }
-      favicon.onerror = () => favicon.style.display = "none";
+      favicon.onerror = () => (favicon.style.display = "none");
       link.appendChild(favicon);
       link.appendChild(document.createTextNode(l.name));
 
