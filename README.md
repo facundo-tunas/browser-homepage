@@ -1,6 +1,8 @@
 # Browser Homepage with Bookmark Manager
 
 ![ezgif-139037b51ebc7](https://github.com/user-attachments/assets/04541fb4-0d3e-4cac-88e9-ce2a319cf9eb)
+<img width="1843" height="973" alt="ezgif com-animated-gif-maker" src="https://github.com/user-attachments/assets/684d9df5-355a-46da-a230-69407fd1807e" />
+
 
 ## Features
 
@@ -55,6 +57,9 @@
 - `Ctrl + A`: Clear search input
 
 ## Installation
+
+NOTE: There's multiple ways to set a browser homepage/new tab page. Initializing a server in the background should always work, but depending on the browser you might be able to directly point the URL to the index.html file under dist/.
+
 - Requirements: Node.js
 
 1. Clone the repo and run server.js.
