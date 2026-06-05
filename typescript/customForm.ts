@@ -45,7 +45,7 @@ function createForm(
     { value: "--cyan", text: "Cyan", color: getCSSVariable("--cyan") },
     { value: "--teal", text: "Teal", color: getCSSVariable("--teal") },
     {
-      value: "--containerBg",
+      value: "--containerBgHover",
       text: "Background Color",
       color: getCSSVariable("--bg"),
     },
