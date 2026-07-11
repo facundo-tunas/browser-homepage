@@ -15,7 +15,7 @@ body * {
 
 .container-card {
   border-radius: 3px;
-  background-color: var(--containerBg);
+  background-color: var(--surface);
   color: var(--fg);
 }
 
@@ -57,16 +57,10 @@ body * {
   height: 100vh;
 
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
-  min-width: 70vw;
-}
-
-.style-alternate .container {
   justify-content: start;
   align-items: start;
+  flex-direction: column;
+
   padding: 2rem;
   gap: 1rem;
 
@@ -76,67 +70,24 @@ body * {
 /* Top Row (clock + search) */
 #top-row {
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   align-items: center;
+  gap: 0.5rem;
 
   max-width: 100%;
   overflow: hidden;
 }
 
-.style-alternate #top-row {
-  flex-direction: row-reverse;
-  align-items: center;
-  gap: 0.5rem;
-}
-
 /* Clock */
 #clock {
   font-family: var(--mono-font);
-  font-size: 4.5rem;
-  font-weight: 500;
-  margin-bottom: 0.25em;
-  padding: 0.2em;
-
-  position: relative;
-  backdrop-filter: blur(var(--blur));
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--containerBgHover);
-    border-radius: 3px;
-    opacity: 0;
-    transition: opacity 0.2s;
-    pointer-events: none;
-
-    z-index: -1;
-  }
-
-  &:hover::before {
-    opacity: 1;
-  }
-
-  &::after {
-    content: attr(data-day);
-    position: absolute;
-    left: 0.25rem;
-    top: 0.15rem;
-
-    opacity: 0.7;
-    font-weight: 400;
-    font-family: inherit;
-    font-size: 0.25em;
-  }
-}
-
-.style-alternate #clock {
   font-size: 1.5rem;
   font-weight: 500;
 
   padding: 0.15em 0.3em;
   margin: 0;
 
+  position: relative;
   backdrop-filter: none;
 
   &::before {
@@ -150,24 +101,26 @@ body * {
 
 /* Message Container */
 .message-container {
-  backdrop-filter: blur(var(--blur));
+  backdrop-filter: none;
 
-  width: 35%;
+  width: auto;
   min-width: 350px;
   max-width: 100vw;
-  background-color: var(--containerBg);
-  padding: 0.75em;
+  background-color: var(--surface);
+  padding: 0.15em 0.3em;
   border-radius: 3px;
 
   font-family: var(--normal-font);
   color: var(--fg);
   font-weight: 400;
-  font-size: 2.5rem;
-  text-align: center;
+  font-size: 1.5rem;
+  text-align: start;
 
   user-select: none;
 
   border: none;
+
+  height: 100%;
 
   &::before {
     content: '';
@@ -192,79 +145,17 @@ body * {
   }
 }
 
-.style-alternate .message-container {
-  font-size: 1.5rem;
-  text-align: start;
-
-  padding: 0.15em 0.3em;
-
-  height: 100%;
-  width: auto;
-
-  backdrop-filter: none;
-
-}
-
 /* Bookmark Container */
 #bookmark-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 95%;
-  margin: 1em 0;
-
-  max-width: calc(260px * 4 + 1rem * 4);
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.style-alternate #bookmark-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   width: 100%;
   max-width: 100%;
   margin: 0;
-
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 /* Bookmark Set */
 .bookmark-set {
-  padding: 1em;
-  background: linear-gradient(var(--containerBg) 18em,
-      var(--accent-container) 18.01em);
-  border-radius: 3px;
-  font-family: var(--mono-font);
-  font-size: 1rem;
-  width: 25%;
-  height: 19em;
-  max-width: 260px;
-  box-sizing: border-box;
-
-  backdrop-filter: blur(var(--blur));
-
-
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(var(--containerBgHover) 18em,
-        var(--accent-container) 18.01em);
-    border-radius: 3px;
-    opacity: 0;
-    transition: opacity 0.2s;
-    pointer-events: none;
-
-    z-index: -1;
-  }
-
-  &:hover::before,
-  &:has(.found)::before {
-    opacity: 1;
-  }
-}
-
-.style-alternate .bookmark-set {
   background: none;
   backdrop-filter: none;
 
@@ -272,41 +163,33 @@ body * {
   padding: 0;
   height: fit-content;
 
+  border-radius: 3px;
+  font-family: var(--mono-font);
+  font-size: 1rem;
+  box-sizing: border-box;
+
   &::before {
     display: none;
   }
 }
 
-
-
 /* Bookmark Inner Container */
 .bookmark-inner-container {
   overflow-y: scroll;
-  height: 15em;
-  padding-right: 6px;
+  height: fit-content;
+  padding-right: 0;
   box-sizing: border-box;
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbarColor) #ffffff00;
 }
 
-.style-alternate .bookmark-inner-container {
-  height: fit-content;
-  padding-right: 0;
-}
-
 /* Bookmark Title */
 .bookmark-title {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--accent-container);
-  margin: 0 0 0.35em;
-  font-family: Roboto;
-}
-
-.style-alternate .bookmark-title {
   font-size: 1rem;
   font-weight: 500;
-  margin-bottom: 0.2em;
+  color: var(--accent-container);
+  margin: 0 0 0.2em;
+  font-family: Roboto;
 }
 
 /* Bookmark Link */
@@ -314,13 +197,9 @@ body * {
   text-decoration: none;
   color: var(--bookmark-color);
   display: block;
-  margin: 0.75em 0;
+  margin: 0.4em 0;
 
   transition: opacity 0.5s;
-}
-
-.style-alternate .bookmark {
-  margin: 0.4em 0;
 }
 
 .divider {
@@ -331,9 +210,7 @@ body * {
   color: inherit;
 
   background-color: var(--accent-container);
-}
 
-.style-alternate .divider {
   opacity: 0;
 }
 
@@ -342,9 +219,6 @@ body * {
 }
 
 .bookmark .favicon {
-  display: none;
-}
-.style-alternate .bookmark .favicon {
   display: inline;
   width: 16px;
   height: 16px;
@@ -368,70 +242,10 @@ input[type=radio] {
   }
 }
 
-@media only screen and (max-width: 1300px) {
-  .style-default {
-    body {
-      height: 100%;
-      display: grid;
-      place-content: center;
-    }
-
-    #clock {
-      margin-top: 2rem;
-    }
-
-    #bookmark-container {
-      overflow: scroll;
-    }
-
-    #bookmark-container>.bookmark-set {
-      width: calc(50% - 40px);
-    }
-
-    .timer {
-      display: none;
-    }
-
-    .message-container {
-      width: 100%;
-    }
-  }
-}
-
 @media only screen and (max-width: 800px) {
-  .style-default #bookmark-container {
-    width: 90%;
-    align-items: center;
-  }
-
-  .style-alternate #top-row {
+  #top-row {
     flex-direction: column;
     align-items: start;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .style-default {
-    .bookmark-title {
-      font-size: 1.2rem;
-    }
-
-    .random-buttons {
-      display: none;
-    }
-  }
-}
-
-@media only screen and (max-width: 550px) {
-  .style-default {
-    #bookmark-container>.bookmark-set {
-      width: 100%;
-    }
-
-    .message-container {
-      margin-top: 1rem;
-      min-width: 85%;
-    }
   }
 }
 

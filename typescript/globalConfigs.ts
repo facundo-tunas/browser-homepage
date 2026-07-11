@@ -1,12 +1,11 @@
 const config = {
-  showDate: true,
   showSearch: true,
+  openBlank: false,
+
   hideWallpapers: false,
   hideGlobalSettings: false,
   hideBookmarks: false,
   hideSearchPrefixes: false,
-  hidePalettes: false,
-  hoverEffects: true,
 };
 
 function loadConfig() {
@@ -16,6 +15,9 @@ function loadConfig() {
       const parsedConfig = JSON.parse(savedConfig);
       if (parsedConfig.showSearch === undefined) {
         parsedConfig.showSearch = true;
+      }
+      if (parsedConfig.openBlank === undefined) {
+        parsedConfig.openBlank = false;
       }
       if (parsedConfig.hideWallpapers === undefined) {
         parsedConfig.hideWallpapers = false;
@@ -28,12 +30,6 @@ function loadConfig() {
       }
       if (parsedConfig.hideSearchPrefixes === undefined) {
         parsedConfig.hideSearchPrefixes = false;
-      }
-      if (parsedConfig.hidePalettes === undefined) {
-        parsedConfig.hidePalettes = false;
-      }
-      if (parsedConfig.hoverEffects === undefined) {
-        parsedConfig.hoverEffects = true;
       }
 
       Object.assign(config, parsedConfig);
@@ -51,28 +47,26 @@ function saveConfig() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  document.documentElement.classList.add("loaded");
   setupBookmarks();
   loadConfig();
 
   const clockElement = document.getElementById("clock");
-  const dateCheckbox = document.getElementById(
-    "toggle-date-checkbox",
-  ) as HTMLInputElement;
   const searchCheckbox = document.getElementById(
     "toggle-search-checkbox",
   ) as HTMLInputElement;
-  const hoverEffectsCheckbox = document.getElementById(
-    "toggle-hover-checkbox",
-  ) as HTMLInputElement;
 
-  dateCheckbox.checked = config.showDate;
   searchCheckbox.checked = config.showSearch;
-  hoverEffectsCheckbox.checked = config.hoverEffects;
 
-  dateCheckbox.addEventListener("change", () => {
-    config.showDate = dateCheckbox.checked;
+  searchCheckbox.addEventListener("change", () => {
+    config.showSearch = searchCheckbox.checked;
     saveConfig();
-    if (clockElement) updateClockDisplay(clockElement);
+    const searchWrapper = document.querySelector(
+      ".message-container",
+    ) as HTMLElement;
+    if (searchWrapper) {
+      searchWrapper.style.display = config.showSearch ? "block" : "none";
+    }
   });
 
   searchCheckbox.addEventListener("change", () => {
@@ -86,12 +80,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  hoverEffectsCheckbox.addEventListener("change", () => {
-    config.hoverEffects = hoverEffectsCheckbox.checked;
+  const blankCheckbox = document.querySelector(
+    "#toggle-blank-checkbox",
+  ) as HTMLInputElement;
+  blankCheckbox.checked = config.openBlank;
+
+  blankCheckbox.addEventListener("change", () => {
+    config.openBlank = blankCheckbox.checked;
     saveConfig();
-    config.hoverEffects
-      ? root.style.setProperty("--containerBgHover", "")
-      : root.style.setProperty("--containerBgHover", "transparent");
   });
 
   // fire the configs up :-)
@@ -110,8 +106,4 @@ document.addEventListener("DOMContentLoaded", function () {
   if (searchWrapper) {
     searchWrapper.style.display = config.showSearch ? "block" : "none";
   }
-
-  config.hoverEffects
-    ? root.style.setProperty("--containerBgHover", "")
-    : root.style.setProperty("--containerBgHover", "transparent");
 });

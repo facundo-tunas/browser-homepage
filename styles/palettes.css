@@ -2,10 +2,11 @@
   --fg: #ffffff;
   --secondaryFg: #d4d4d4;
   --bookmark-color: #d4d4d4;
-  --containerBg: rgba(39, 39, 39, var(--transparency, 1));
-  --containerBgHover: rgba(39, 39, 39, 1);
+  --containerBg: rgb(39, 39, 39);
+  --surface: rgb(30, 30, 30);
+  --containerBgHover: rgb(39, 39, 39);
   --accent-container: #fee0e0;
-  --scrollbarColor: rgba(63, 63, 63, calc(var(--transparency, 1) * 0.8));
+  --scrollbarColor: rgba(63, 63, 63, 0.8);
 
   --green: rgb(115, 238, 131);
   --red: #ee7373;
@@ -19,50 +20,23 @@
   --teal: #4fd2c2;
 
   --hover-color: var(--cyan);
-  --transparent: rgba(255, 255, 255, calc(var(--transparency, 1) * 0.15));
+  --active-color: #fff;
+  --transparent: rgba(255, 255, 255, 0.15);
   --background-shadow-settings: rgba(255,
       255,
       255,
       0.1);
 }
 
-.palette-mocha {
-  --fg: #cdd6f4;
-  --secondaryFg: #a6adc8;
-  --bookmark-color: #a6adc8;
-  --containerBg: rgba(30, 30, 46, var(--transparency, 1));
-  --containerBgHover: rgba(30, 30, 46, 1);
-  --accent-container: #b4befe;
-  --scrollbarColor: rgba(69, 71, 90, calc(var(--transparency, 1) * 0.8));
-  --coin-shadow: #cdd6f4;
-
-  --green: #a6e3a1;
-  --red: #f38ba8;
-  --blue: #89b4fa;
-  --yellow: #f9e2af;
-  --salmon: #eba0ac;
-  --purple: #cba6f7;
-  --orange: #fab387;
-  --pink: #f5c2e7;
-  --cyan: #94e2d5;
-  --teal: #74c7ec;
-
-  --hover-color: var(--teal);
-  --transparent: rgba(255, 255, 255, calc(var(--transparency, 1) * 0.15));
-  --background-shadow-settings: rgba(255,
-      255,
-      255,
-      0.3);
-}
-
-.palette-catppuccin-latte {
+.palette-catppuccin {
   --fg: #4c4f69;
   --secondaryFg: #9ca0b0;
   --bookmark-color: #9ca0b0;
-  --containerBg: rgba(239, 241, 245, var(--transparency, 1));
-  --containerBgHover: rgba(239, 241, 245, 1);
+  --containerBg: rgb(239, 241, 245);
+  --surface: rgb(220, 222, 228);
+  --containerBgHover: rgb(239, 241, 245);
   --accent-container: #209fb5;
-  --scrollbarColor: rgba(204, 208, 218, calc(var(--transparency, 1) * 0.8));
+  --scrollbarColor: rgba(204, 208, 218, 0.8);
   --coin-shadow: #dce0e8;
 
   --green: #40a02b;
@@ -77,23 +51,51 @@
   --teal: #209fb5;
 
   --hover-color: var(--teal);
-  --active-color: #000 !important;
+  --active-color: #000;
+  --transparent: rgba(0, 0, 0, 0.05);
+  --background-shadow-settings: rgba(85, 85, 85, 0.05);
+}
 
-  --transparent: rgba(0, 0, 0, calc(var(--transparency, 1) * 0.05));
-  --background-shadow-settings: rgba(85,
-      85,
-      85,
-      0.05);
+@media (prefers-color-scheme: dark) {
+  .palette-catppuccin {
+    --fg: #cdd6f4;
+    --secondaryFg: #a6adc8;
+    --bookmark-color: #a6adc8;
+    --containerBg: rgb(30, 30, 46);
+    --surface: rgb(24, 24, 38);
+    --containerBgHover: rgb(30, 30, 46);
+    --accent-container: #b4befe;
+    --scrollbarColor: rgba(69, 71, 90, 0.8);
+    --coin-shadow: #cdd6f4;
+
+    --green: #a6e3a1;
+    --red: #f38ba8;
+    --blue: #89b4fa;
+    --yellow: #f9e2af;
+    --salmon: #eba0ac;
+    --purple: #cba6f7;
+    --orange: #fab387;
+    --pink: #f5c2e7;
+    --cyan: #94e2d5;
+    --teal: #74c7ec;
+
+    --active-color: #fff;
+
+    --hover-color: var(--teal);
+    --transparent: rgba(255, 255, 255, 0.15);
+    --background-shadow-settings: rgba(255, 255, 255, 0.3);
+  }
 }
 
 .palette-nord {
   --fg: #eceff4;
   --secondaryFg: #d8dee9;
   --bookmark-color: #e5e9f0;
-  --containerBg: rgba(46, 52, 64, var(--transparency, 1));
-  --containerBgHover: rgba(46, 52, 64, 1);
+  --containerBg: rgb(46, 52, 64);
+  --surface: rgb(38, 44, 56);
+  --containerBgHover: rgb(46, 52, 64);
   --accent-container: #88c0d0;
-  --scrollbarColor: rgba(76, 86, 106, calc(var(--transparency, 1) * 0.8));
+  --scrollbarColor: rgba(76, 86, 106, 0.8);
 
   --green: #a3be8c;
   --red: #bf616a;
@@ -107,21 +109,23 @@
   --teal: #88c0d0;
 
   --hover-color: var(--teal);
-  --transparent: rgba(255, 255, 255, calc(var(--transparency, 1) * 0.05));
+  --active-color: #fff;
+  --transparent: rgba(255, 255, 255, 0.05);
   --background-shadow-settings: rgba(255,
       255,
       255,
       0.2);
 }
 
-.palette-solarized-light {
+.palette-solarized {
   --fg: #586e75;
   --secondaryFg: #657b83;
   --bookmark-color: #839496;
-  --containerBg: rgba(253, 246, 227, var(--transparency, 1));
-  --containerBgHover: rgba(253, 246, 227, 1);
+  --containerBg: rgb(253, 246, 227);
+  --surface: rgb(235, 228, 210);
+  --containerBgHover: rgb(253, 246, 227);
   --accent-container: #268bd2;
-  --scrollbarColor: rgba(238, 232, 213, calc(var(--transparency, 1) * 0.8));
+  --scrollbarColor: rgba(238, 232, 213, 0.8);
 
   --green: #859900;
   --red: #dc322f;
@@ -135,51 +139,36 @@
   --purple: #657b83;
 
   --hover-color: var(--blue);
-  --active-color: #000 !important;
-
-  --transparent: rgba(0, 0, 0, calc(var(--transparency, 1) * 0.05));
-  --background-shadow-settings: rgba(85,
-      85,
-      85,
-      0.05);
+  --active-color: #000;
+  --transparent: rgba(0, 0, 0, 0.05);
+  --background-shadow-settings: rgba(85, 85, 85, 0.05);
 }
 
-.palette-solarized-dark {
-  --fg: #eee8d5;
-  --secondaryFg: #93a1a1;
-  --bookmark-color: #586e75;
-  --containerBg: rgba(0, 43, 54, var(--transparency, 1));
-  --containerBgHover: rgba(0, 43, 54, 1);
-  --accent-container: #268bd2;
-  --scrollbarColor: rgba(7, 54, 66, calc(var(--transparency, 1) * 0.8));
+@media (prefers-color-scheme: dark) {
+  .palette-solarized {
+    --fg: #eee8d5;
+    --secondaryFg: #93a1a1;
+    --bookmark-color: #586e75;
+    --containerBg: rgb(0, 43, 54);
+    --surface: rgb(0, 35, 44);
+    --containerBgHover: rgb(0, 43, 54);
+    --scrollbarColor: rgba(7, 54, 66, 0.8);
+    --active-color: #fff;
 
-  --green: #859900;
-  --red: #dc322f;
-  --blue: #268bd2;
-  --yellow: #b58900;
-  --salmon: #cb4b16;
-  --cyan: #2aa198;
-  --orange: #d33682;
-  --pink: #6c71c4;
-  --teal: #93a1a1;
-  --purple: #657b83;
-
-  --hover-color: var(--blue);
-  --transparent: rgba(255, 255, 255, calc(var(--transparency, 1) * 0.15));
-  --background-shadow-settings: rgba(255,
-      255,
-      255,
-      0.3);
+    --transparent: rgba(255, 255, 255, 0.15);
+    --background-shadow-settings: rgba(255, 255, 255, 0.3);
+  }
 }
 
 .palette-tokyo-night {
   --fg: #a9b1d6;
   --secondaryFg: #787c99;
   --bookmark-color: #787c99;
-  --containerBg: rgba(26, 27, 38, var(--transparency, 1));
-  --containerBgHover: rgba(26, 27, 38, 1);
+  --containerBg: rgb(26, 27, 38);
+  --surface: rgb(20, 21, 32);
+  --containerBgHover: rgb(26, 27, 38);
   --accent-container: #7aa2f7;
-  --scrollbarColor: rgba(36, 40, 59, calc(var(--transparency, 1) * 0.8));
+  --scrollbarColor: rgba(36, 40, 59, 0.8);
 
   --green: #9ece6a;
   --red: #f7768e;
@@ -193,7 +182,8 @@
   --teal: #1abc9c;
 
   --hover-color: var(--cyan);
-  --transparent: rgba(255, 255, 255, calc(var(--transparency, 1) * 0.15));
+  --active-color: #fff;
+  --transparent: rgba(255, 255, 255, 0.15);
   --background-shadow-settings: rgba(255,
       255,
       255,
@@ -204,10 +194,11 @@
   --fg: #f8f8f2;
   --secondaryFg: #bfbfbf;
   --bookmark-color: #bfbfbf;
-  --containerBg: rgba(40, 42, 54, var(--transparency, 1));
-  --containerBgHover: rgba(40, 42, 54, 1);
+  --containerBg: rgb(40, 42, 54);
+  --surface: rgb(33, 35, 46);
+  --containerBgHover: rgb(40, 42, 54);
   --accent-container: #bd93f9;
-  --scrollbarColor: rgba(68, 71, 90, calc(var(--transparency, 1) * 0.8));
+  --scrollbarColor: rgba(68, 71, 90, 0.8);
 
   --green: #50fa7b;
   --red: #ff5555;
@@ -221,21 +212,23 @@
   --teal: #5af78e;
 
   --hover-color: var(--cyan);
-  --transparent: rgba(255, 255, 255, calc(var(--transparency, 1) * 0.15));
+  --active-color: #fff;
+  --transparent: rgba(255, 255, 255, 0.15);
   --background-shadow-settings: rgba(255,
       255,
       255,
       0.3);
 }
 
-.palette-gruvbox-light {
+.palette-gruvbox {
   --fg: #3c3836;
   --secondaryFg: #504945;
   --bookmark-color: #504945;
-  --containerBg: rgba(251, 241, 199, var(--transparency, 1));
-  --containerBgHover: rgba(251, 241, 199, 1);
+  --containerBg: rgb(251, 241, 199);
+  --surface: rgb(235, 225, 185);
+  --containerBgHover: rgb(251, 241, 199);
   --accent-container: #83a598;
-  --scrollbarColor: rgba(213, 196, 161, calc(var(--transparency, 1) * 0.8));
+  --scrollbarColor: rgba(213, 196, 161, 0.8);
 
   --green: #98971a;
   --red: #cc241d;
@@ -249,39 +242,32 @@
   --teal: #8ec07c;
 
   --hover-color: var(--cyan);
-  --active-color: #000 !important;
-
-  --background-shadow-settings: rgba(85,
-      85,
-      85,
-      0.05);
-  --transparent: rgba(0, 0, 0, calc(var(--transparency, 1) * 0.05));
+  --active-color: #000;
+  --transparent: rgba(0, 0, 0, 0.05);
+  --background-shadow-settings: rgba(85, 85, 85, 0.05);
 }
 
-.palette-gruvbox-dark {
-  --fg: #ebdbb2;
-  --secondaryFg: #bdae93;
-  --bookmark-color: #bdae93;
-  --containerBg: rgba(40, 40, 40, var(--transparency, 1));
-  --containerBgHover: rgba(40, 40, 40, 1);
-  --accent-container: #83a598;
-  --scrollbarColor: rgba(60, 56, 54, calc(var(--transparency, 1) * 0.8));
+@media (prefers-color-scheme: dark) {
+  .palette-gruvbox {
+    --fg: #ebdbb2;
+    --secondaryFg: #bdae93;
+    --bookmark-color: #bdae93;
+    --containerBg: rgb(40, 40, 40);
+    --surface: rgb(32, 32, 32);
+    --containerBgHover: rgb(40, 40, 40);
+    --scrollbarColor: rgba(60, 56, 54, 0.8);
+    --active-color: #fff;
 
-  --green: #b8bb26;
-  --red: #fb4934;
-  --blue: #83a598;
-  --yellow: #fabd2f;
-  --salmon: #fe8019;
-  --purple: #d3869b;
-  --orange: #fe8019;
-  --pink: #d65d0e;
-  --cyan: #8ec07c;
-  --teal: #689d6a;
+    --green: #b8bb26;
+    --red: #fb4934;
+    --blue: #83a598;
+    --yellow: #fabd2f;
+    --orange: #fe8019;
+    --pink: #d65d0e;
+    --cyan: #8ec07c;
+    --teal: #689d6a;
 
-  --hover-color: var(--cyan);
-  --transparent: rgba(255, 255, 255, calc(var(--transparency, 1) * 0.05));
-  --background-shadow-settings: rgba(255,
-      255,
-      255,
-      0.2);
+    --transparent: rgba(255, 255, 255, 0.05);
+    --background-shadow-settings: rgba(255, 255, 255, 0.2);
+  }
 }

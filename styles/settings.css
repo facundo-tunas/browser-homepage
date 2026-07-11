@@ -2,8 +2,6 @@
   translate: 0;
 }
 .settings {
-  --containerBg: var(--containerBgHover);
-
   --width: min(450px, 100vw);
   width: var(--width);
   z-index: 99;
@@ -25,7 +23,7 @@
   max-height: 100vh;
   overflow: scroll;
 
-  background-color: var(--containerBg);
+  background-color: var(--surface);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
 

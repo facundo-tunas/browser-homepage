@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="palette-catppuccin" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Homepage</title>
-    <link href="assets/favicon.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="assets/favicon.svg" rel="shortcut icon" type="image/x-icon" />
 
     <link rel="preload" href="fonts/roboto-v30-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/roboto-mono-v23-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
@@ -13,7 +13,7 @@
     <script src="./bundle.min.js"></script>
   </head>
 
-  <body>
+<body >
     <div class="settings container-card">
       <div>
         <h3 id="global-settings-title">Global Settings</h3>
@@ -26,9 +26,10 @@
             <input type="checkbox" id="toggle-search-checkbox" />
             Show Search
           </label>
+
           <label class="setting-checkbox">
-            <input type="checkbox" id="toggle-hover-checkbox" />
-            Hover Effects (Only shown with transparency on)
+            <input type="checkbox" id="toggle-blank-checkbox" />
+            Open in New Tab
           </label>
         </div>
       </div>
@@ -48,14 +49,7 @@
         <h3 id="wallpaper-title">Background</h3>
         <div id="wallpaper-container" class="settings-category-container"></div>
       </div>
-      <div>
-        <h3 id="palettes-title">Color Palettes</h3>
-        <div id="palettes-container" class="settings-category-container"></div>
-      </div>
-      <div>
-        <h3 id="layout-styles-title">Layout Styles</h3>
-        <div id="style-settings-container" class="settings-category-container"></div>
-      </div>
+
     </div>
     <div class="coin-flip">
       <img

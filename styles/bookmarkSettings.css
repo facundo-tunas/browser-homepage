@@ -31,7 +31,7 @@
 
     padding: 0.25rem;
     &:hover {
-      background-color: var(--containerBg);
+      background-color: var(--surface);
       border-radius: 5px;
     }
   }
@@ -63,7 +63,7 @@
   > span,
   input {
     padding: 0.25rem 0.5rem;
-    background-color: var(--containerBg);
+    background-color: var(--surface);
 
     border: none;
   }

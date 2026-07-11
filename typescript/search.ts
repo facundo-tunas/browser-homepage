@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let baseWidth = 0;
   setTimeout(() => {
-   baseWidth = searchInput.offsetWidth;
+    baseWidth = searchInput.offsetWidth;
   }, 0);
 
   searchInput.addEventListener("input", () => {
@@ -26,8 +26,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const settingsBar = document.querySelector(".settings") as HTMLElement;
 
-  const redirectToUrl = (url: string) => {
-    window.location.href = url;
+  const redirectToUrl = (url: string, links: NodeListOf<HTMLAnchorElement>) => {
+    searchInput.value = "";
+    resetBookmarkStyles(links);
+
+    if (config.openBlank) {
+      window.open(url, "_blank", "noreferrer");
+    } else {
+      window.location.href = url;
+    }
   };
 
   const resetBookmarkStyles = (links: NodeListOf<HTMLElement>) => {
@@ -127,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
           };
 
           const finalUrl = prefixUrl.replaceAll("{query}", findAndReplace);
-          redirectToUrl(finalUrl);
+          redirectToUrl(finalUrl, links);
         }
         return;
       } else {
@@ -136,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
           redirectToUrl(
             `https://www.google.com/search?q=${encodeURIComponent(
               searchInput.value,
-            )}`,
+            )}`, links
           );
           return;
         }
@@ -163,8 +170,8 @@ document.addEventListener("DOMContentLoaded", function () {
           if (link) {
             found = true;
 
-            searchInput.style.animation = "right 0.1s 1 forwards";
-            redirectToUrl(link.href);
+            searchInput.style.animation = "right 0.1s 1";
+            redirectToUrl(link.href, links);
             return;
           }
         }
@@ -179,8 +186,8 @@ document.addEventListener("DOMContentLoaded", function () {
               .includes(searchInput.value.toLowerCase())
           ) {
             found = true;
-            searchInput.style.animation = "right 0.1s 1 forwards";
-            redirectToUrl(link.href);
+            searchInput.style.animation = "right 0.1s 1";
+            redirectToUrl(link.href, links);
 
             return;
           }
@@ -191,8 +198,8 @@ document.addEventListener("DOMContentLoaded", function () {
             (link.classList.contains("on") && numberFind === 1)
           ) {
             found = true;
-            searchInput.style.animation = "right 0.1s 1 forwards";
-            redirectToUrl(link.href);
+            searchInput.style.animation = "right 0.1s 1";
+            redirectToUrl(link.href, links);
             return;
           }
         });

@@ -9,8 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initializeBookmarksSettings();
   initializeSearchSettings();
   initializeWallpaperSettings();
-  initializePaletteSettings();
-  initializeStyleSettings();
   initializeSectionHideToggles();
 });
 
@@ -19,7 +17,7 @@ function initializeSectionHideToggles() {
     { title: "#global-settings-title", container: "#global-settings-title + .individual-setting", configKey: "hideGlobalSettings" as const },
     { title: "#bookmarks-title", container: "#add-bookmark, #bookmarks-container", configKey: "hideBookmarks" as const },
     { title: "#search-prefixes-title", container: "#search-prefixes-container", configKey: "hideSearchPrefixes" as const },
-    { title: "#palettes-title", container: "#palettes-container", configKey: "hidePalettes" as const },
+
   ];
 
   sections.forEach(({ title, container, configKey }) => {

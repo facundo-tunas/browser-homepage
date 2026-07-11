@@ -53,9 +53,5 @@ function getOrdinalSuffix(n: number): string {
 }
 
 function updateClockDisplay(clockElement: HTMLElement) {
-  if (config.showDate) {
-    clockElement.setAttribute("data-day", getDayName());
-  } else {
     clockElement.setAttribute("data-day", "");
-  }
 }
