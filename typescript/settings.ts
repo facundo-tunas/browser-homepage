@@ -17,7 +17,7 @@ function initializeSectionHideToggles() {
     { title: "#global-settings-title", container: "#global-settings-title + .individual-setting", configKey: "hideGlobalSettings" as const },
     { title: "#bookmarks-title", container: "#add-bookmark, #bookmarks-container", configKey: "hideBookmarks" as const },
     { title: "#search-prefixes-title", container: "#search-prefixes-container", configKey: "hideSearchPrefixes" as const },
-
+    { title: "#transparency-title", container: "#transparency-title + .individual-setting", configKey: "hideTransparency" as const },
   ];
 
   sections.forEach(({ title, container, configKey }) => {

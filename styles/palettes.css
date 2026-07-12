@@ -2,11 +2,11 @@
   --fg: #ffffff;
   --secondaryFg: #d4d4d4;
   --bookmark-color: #d4d4d4;
-  --containerBg: rgb(39, 39, 39);
+  --containerBg: rgba(39, 39, 39, var(--transparency, 1));
   --surface: rgb(30, 30, 30);
   --containerBgHover: rgb(39, 39, 39);
   --accent-container: #fee0e0;
-  --scrollbarColor: rgba(63, 63, 63, 0.8);
+  --scrollbarColor: rgba(63, 63, 63, calc(var(--transparency, 1) * 0.8));
 
   --green: rgb(115, 238, 131);
   --red: #ee7373;
@@ -21,7 +21,7 @@
 
   --hover-color: var(--cyan);
   --active-color: #fff;
-  --transparent: rgba(255, 255, 255, 0.15);
+  --transparent: rgba(255, 255, 255, calc(var(--transparency, 1) * 0.15));
   --background-shadow-settings: rgba(255,
       255,
       255,
@@ -32,11 +32,11 @@
   --fg: #4c4f69;
   --secondaryFg: #9ca0b0;
   --bookmark-color: #9ca0b0;
-  --containerBg: rgb(239, 241, 245);
+  --containerBg: rgba(239, 241, 245, var(--transparency, 1));
   --surface: rgb(220, 222, 228);
   --containerBgHover: rgb(239, 241, 245);
   --accent-container: #209fb5;
-  --scrollbarColor: rgba(204, 208, 218, 0.8);
+  --scrollbarColor: rgba(204, 208, 218, calc(var(--transparency, 1) * 0.8));
   --coin-shadow: #dce0e8;
 
   --green: #40a02b;
@@ -52,7 +52,7 @@
 
   --hover-color: var(--teal);
   --active-color: #000;
-  --transparent: rgba(0, 0, 0, 0.05);
+  --transparent: rgba(0, 0, 0, calc(var(--transparency, 1) * 0.05));
   --background-shadow-settings: rgba(85, 85, 85, 0.05);
 }
 
@@ -61,11 +61,11 @@
     --fg: #cdd6f4;
     --secondaryFg: #a6adc8;
     --bookmark-color: #a6adc8;
-    --containerBg: rgb(30, 30, 46);
+    --containerBg: rgba(30, 30, 46, var(--transparency, 1));
     --surface: rgb(24, 24, 38);
     --containerBgHover: rgb(30, 30, 46);
     --accent-container: #b4befe;
-    --scrollbarColor: rgba(69, 71, 90, 0.8);
+    --scrollbarColor: rgba(69, 71, 90, calc(var(--transparency, 1) * 0.8));
     --coin-shadow: #cdd6f4;
 
     --green: #a6e3a1;
@@ -82,7 +82,7 @@
     --active-color: #fff;
 
     --hover-color: var(--teal);
-    --transparent: rgba(255, 255, 255, 0.15);
+    --transparent: rgba(255, 255, 255, calc(var(--transparency, 1) * 0.15));
     --background-shadow-settings: rgba(255, 255, 255, 0.3);
   }
 }
@@ -91,11 +91,11 @@
   --fg: #eceff4;
   --secondaryFg: #d8dee9;
   --bookmark-color: #e5e9f0;
-  --containerBg: rgb(46, 52, 64);
+  --containerBg: rgba(46, 52, 64, var(--transparency, 1));
   --surface: rgb(38, 44, 56);
   --containerBgHover: rgb(46, 52, 64);
   --accent-container: #88c0d0;
-  --scrollbarColor: rgba(76, 86, 106, 0.8);
+  --scrollbarColor: rgba(76, 86, 106, calc(var(--transparency, 1) * 0.8));
 
   --green: #a3be8c;
   --red: #bf616a;
@@ -110,7 +110,7 @@
 
   --hover-color: var(--teal);
   --active-color: #fff;
-  --transparent: rgba(255, 255, 255, 0.05);
+  --transparent: rgba(255, 255, 255, calc(var(--transparency, 1) * 0.05));
   --background-shadow-settings: rgba(255,
       255,
       255,
@@ -121,11 +121,11 @@
   --fg: #586e75;
   --secondaryFg: #657b83;
   --bookmark-color: #839496;
-  --containerBg: rgb(253, 246, 227);
+  --containerBg: rgba(253, 246, 227, var(--transparency, 1));
   --surface: rgb(235, 228, 210);
   --containerBgHover: rgb(253, 246, 227);
   --accent-container: #268bd2;
-  --scrollbarColor: rgba(238, 232, 213, 0.8);
+  --scrollbarColor: rgba(238, 232, 213, calc(var(--transparency, 1) * 0.8));
 
   --green: #859900;
   --red: #dc322f;
@@ -140,7 +140,7 @@
 
   --hover-color: var(--blue);
   --active-color: #000;
-  --transparent: rgba(0, 0, 0, 0.05);
+  --transparent: rgba(0, 0, 0, calc(var(--transparency, 1) * 0.05));
   --background-shadow-settings: rgba(85, 85, 85, 0.05);
 }
 
@@ -149,13 +149,13 @@
     --fg: #eee8d5;
     --secondaryFg: #93a1a1;
     --bookmark-color: #586e75;
-    --containerBg: rgb(0, 43, 54);
+    --containerBg: rgba(0, 43, 54, var(--transparency, 1));
     --surface: rgb(0, 35, 44);
     --containerBgHover: rgb(0, 43, 54);
-    --scrollbarColor: rgba(7, 54, 66, 0.8);
+    --scrollbarColor: rgba(7, 54, 66, calc(var(--transparency, 1) * 0.8));
     --active-color: #fff;
 
-    --transparent: rgba(255, 255, 255, 0.15);
+    --transparent: rgba(255, 255, 255, calc(var(--transparency, 1) * 0.15));
     --background-shadow-settings: rgba(255, 255, 255, 0.3);
   }
 }
@@ -164,11 +164,11 @@
   --fg: #a9b1d6;
   --secondaryFg: #787c99;
   --bookmark-color: #787c99;
-  --containerBg: rgb(26, 27, 38);
+  --containerBg: rgba(26, 27, 38, var(--transparency, 1));
   --surface: rgb(20, 21, 32);
   --containerBgHover: rgb(26, 27, 38);
   --accent-container: #7aa2f7;
-  --scrollbarColor: rgba(36, 40, 59, 0.8);
+  --scrollbarColor: rgba(36, 40, 59, calc(var(--transparency, 1) * 0.8));
 
   --green: #9ece6a;
   --red: #f7768e;
@@ -183,7 +183,7 @@
 
   --hover-color: var(--cyan);
   --active-color: #fff;
-  --transparent: rgba(255, 255, 255, 0.15);
+  --transparent: rgba(255, 255, 255, calc(var(--transparency, 1) * 0.15));
   --background-shadow-settings: rgba(255,
       255,
       255,
@@ -194,11 +194,11 @@
   --fg: #f8f8f2;
   --secondaryFg: #bfbfbf;
   --bookmark-color: #bfbfbf;
-  --containerBg: rgb(40, 42, 54);
+  --containerBg: rgba(40, 42, 54, var(--transparency, 1));
   --surface: rgb(33, 35, 46);
   --containerBgHover: rgb(40, 42, 54);
   --accent-container: #bd93f9;
-  --scrollbarColor: rgba(68, 71, 90, 0.8);
+  --scrollbarColor: rgba(68, 71, 90, calc(var(--transparency, 1) * 0.8));
 
   --green: #50fa7b;
   --red: #ff5555;
@@ -213,7 +213,7 @@
 
   --hover-color: var(--cyan);
   --active-color: #fff;
-  --transparent: rgba(255, 255, 255, 0.15);
+  --transparent: rgba(255, 255, 255, calc(var(--transparency, 1) * 0.15));
   --background-shadow-settings: rgba(255,
       255,
       255,
@@ -224,11 +224,11 @@
   --fg: #3c3836;
   --secondaryFg: #504945;
   --bookmark-color: #504945;
-  --containerBg: rgb(251, 241, 199);
+  --containerBg: rgba(251, 241, 199, var(--transparency, 1));
   --surface: rgb(235, 225, 185);
   --containerBgHover: rgb(251, 241, 199);
   --accent-container: #83a598;
-  --scrollbarColor: rgba(213, 196, 161, 0.8);
+  --scrollbarColor: rgba(213, 196, 161, calc(var(--transparency, 1) * 0.8));
 
   --green: #98971a;
   --red: #cc241d;
@@ -243,7 +243,7 @@
 
   --hover-color: var(--cyan);
   --active-color: #000;
-  --transparent: rgba(0, 0, 0, 0.05);
+  --transparent: rgba(0, 0, 0, calc(var(--transparency, 1) * 0.05));
   --background-shadow-settings: rgba(85, 85, 85, 0.05);
 }
 
@@ -252,10 +252,10 @@
     --fg: #ebdbb2;
     --secondaryFg: #bdae93;
     --bookmark-color: #bdae93;
-    --containerBg: rgb(40, 40, 40);
+    --containerBg: rgba(40, 40, 40, var(--transparency, 1));
     --surface: rgb(32, 32, 32);
     --containerBgHover: rgb(40, 40, 40);
-    --scrollbarColor: rgba(60, 56, 54, 0.8);
+    --scrollbarColor: rgba(60, 56, 54, calc(var(--transparency, 1) * 0.8));
     --active-color: #fff;
 
     --green: #b8bb26;
@@ -267,7 +267,7 @@
     --cyan: #8ec07c;
     --teal: #689d6a;
 
-    --transparent: rgba(255, 255, 255, 0.05);
+    --transparent: rgba(255, 255, 255, calc(var(--transparency, 1) * 0.05));
     --background-shadow-settings: rgba(255, 255, 255, 0.2);
   }
 }

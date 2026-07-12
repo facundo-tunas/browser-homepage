@@ -9,6 +9,9 @@
   --active-color: #fff;
   --background-shadow-settings: rgba(255, 255, 255, 0.05);
 
+  --blur: 0px;
+  --transparency: 1;
+
   background-color: var(--containerBg) !important;
 }
 

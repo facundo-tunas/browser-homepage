@@ -123,9 +123,67 @@
   }
 }
 
+.setting-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  font-size: 0.9rem;
+  font-weight: 400;
+
+  &:not(:last-child) {
+    margin-bottom: 0.75rem;
+  }
+}
+
+.setting-slider input[type="range"] {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+  height: 15px;
+}
+
+.setting-slider input[type="range"]::-webkit-slider-runnable-track {
+  height: 5px;
+  border-radius: 2.5px;
+  background: var(--containerBgHover);
+}
+
+.setting-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: var(--accent-container);
+  margin-top: -5px;
+}
+
+.setting-slider input[type="range"]::-moz-range-track {
+  height: 5px;
+  border-radius: 2.5px;
+  background: var(--containerBgHover);
+}
+
+.setting-slider input[type="range"]::-moz-range-thumb {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: var(--accent-container);
+  border: none;
+}
+
+.setting-slider input[type="range"]::-moz-range-progress {
+  height: 5px;
+  border-radius: 2.5px;
+  background: var(--accent-container);
+}
+
 #wallpaper-title:hover,
 #bookmarks-title:hover,
 #search-prefixes-title:hover,
+#transparency-title:hover,
 #palettes-title:hover,
 #global-settings-title:hover {
   cursor: pointer;
@@ -135,6 +193,7 @@
 #wallpaper-title.hidden::after,
 #bookmarks-title.hidden::after,
 #search-prefixes-title.hidden::after,
+#transparency-title.hidden::after,
 #palettes-title.hidden::after,
 #global-settings-title.hidden::after {
   content: " (hidden)";
