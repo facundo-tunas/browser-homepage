@@ -4,7 +4,6 @@
   --bookmark-color: #d4d4d4;
   --containerBg: rgb(39, 39, 39);
   --surface: rgb(30, 30, 30);
-  --containerBgHover: rgb(39, 39, 39);
   --accent-container: #fee0e0;
   --scrollbarColor: rgba(63, 63, 63, 0.8);
 
@@ -32,9 +31,8 @@
   --fg: #4c4f69;
   --secondaryFg: #9ca0b0;
   --bookmark-color: #9ca0b0;
-  --containerBg: rgb(239, 241, 245);
+  --containerBg: #f8fbf9;
   --surface: rgb(220, 222, 228);
-  --containerBgHover: rgb(239, 241, 245);
   --accent-container: #209fb5;
   --scrollbarColor: rgba(204, 208, 218, 0.8);
   --coin-shadow: #dce0e8;
@@ -63,7 +61,6 @@
     --bookmark-color: #a6adc8;
     --containerBg: rgb(30, 30, 46);
     --surface: rgb(24, 24, 38);
-    --containerBgHover: rgb(30, 30, 46);
     --accent-container: #b4befe;
     --scrollbarColor: rgba(69, 71, 90, 0.8);
     --coin-shadow: #cdd6f4;
@@ -93,7 +90,6 @@
   --bookmark-color: #e5e9f0;
   --containerBg: rgb(46, 52, 64);
   --surface: rgb(38, 44, 56);
-  --containerBgHover: rgb(46, 52, 64);
   --accent-container: #88c0d0;
   --scrollbarColor: rgba(76, 86, 106, 0.8);
 
@@ -123,7 +119,6 @@
   --bookmark-color: #839496;
   --containerBg: rgb(253, 246, 227);
   --surface: rgb(235, 228, 210);
-  --containerBgHover: rgb(253, 246, 227);
   --accent-container: #268bd2;
   --scrollbarColor: rgba(238, 232, 213, 0.8);
 
@@ -151,7 +146,6 @@
     --bookmark-color: #586e75;
     --containerBg: rgb(0, 43, 54);
     --surface: rgb(0, 35, 44);
-    --containerBgHover: rgb(0, 43, 54);
     --scrollbarColor: rgba(7, 54, 66, 0.8);
     --active-color: #fff;
 
@@ -166,7 +160,6 @@
   --bookmark-color: #787c99;
   --containerBg: rgb(26, 27, 38);
   --surface: rgb(20, 21, 32);
-  --containerBgHover: rgb(26, 27, 38);
   --accent-container: #7aa2f7;
   --scrollbarColor: rgba(36, 40, 59, 0.8);
 
@@ -196,7 +189,6 @@
   --bookmark-color: #bfbfbf;
   --containerBg: rgb(40, 42, 54);
   --surface: rgb(33, 35, 46);
-  --containerBgHover: rgb(40, 42, 54);
   --accent-container: #bd93f9;
   --scrollbarColor: rgba(68, 71, 90, 0.8);
 
@@ -226,7 +218,6 @@
   --bookmark-color: #504945;
   --containerBg: rgb(251, 241, 199);
   --surface: rgb(235, 225, 185);
-  --containerBgHover: rgb(251, 241, 199);
   --accent-container: #83a598;
   --scrollbarColor: rgba(213, 196, 161, 0.8);
 
@@ -254,7 +245,6 @@
     --bookmark-color: #bdae93;
     --containerBg: rgb(40, 40, 40);
     --surface: rgb(32, 32, 32);
-    --containerBgHover: rgb(40, 40, 40);
     --scrollbarColor: rgba(60, 56, 54, 0.8);
     --active-color: #fff;
 

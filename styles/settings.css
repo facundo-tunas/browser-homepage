@@ -165,7 +165,7 @@
 
 .split-input {
   width: 2rem;
-  background: var(--containerBgHover);
+  background: var(--containerBg);
   padding: 4px;
   
   border: 1px solid rgba(255, 255, 255, 0.1);

@@ -1,5 +1,5 @@
 .dynamic-form {
-  --settings-bg: var(--containerBgHover);
+  --settings-bg: var(--containerBg);
 
   position: absolute;
   display: flex;

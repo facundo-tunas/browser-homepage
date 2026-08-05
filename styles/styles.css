@@ -126,7 +126,7 @@ body * {
     content: '';
     position: absolute;
     inset: 0;
-    background: var(--containerBgHover);
+    background: var(--containerBg);
     border-radius: 3px;
     opacity: 0;
     transition: opacity 0.2s;
